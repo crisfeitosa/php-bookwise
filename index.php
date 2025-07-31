@@ -25,7 +25,7 @@
     </nav>
   </header>
   
-  <main class="mx-auto max-w-screen-lg space-y-6">
+  <main class="mx-auto max-w-screen-lg space-y-6 px-8">
     <form class="w-full flex space-x-2 mt-6">
       <input 
         type="text" 
@@ -35,14 +35,15 @@
         <button type="submit">🔎</button>
     </form>
 
-    <section class="space-y-4">
+    <!-- Lista de Livros -->
+    <section class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       <!-- Livro -->
-      <div class="w-1/3 p-2 rounded border-stone-800 border-2 bg-stone-900">
+      <div class="p-2 rounded border-stone-800 border-2 bg-stone-900">
         <div class="flex">
           <div class="w-1/3">Imagem</div>
 
           <div>
-            <div class="font-semibold">Titulo</div>
+            <a href="/book.php?" class="font-semibold hover:underline">Titulo</a>
             <div class="text-xs italic">Autor</div>
             <div class="text-xs italic">⭐⭐⭐⭐⭐(3 Avaliações)</div>
           </div>
@@ -51,7 +52,7 @@
         <div class="text-sm">Descrição</div>
       </div>
     </section>
-    
+
   </main>
 </body>
 
