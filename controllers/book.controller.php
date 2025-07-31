@@ -7,5 +7,5 @@
 
   $book = array_pop($filteredBooks);
 
-  view('book');
+  view('book', compact('book'));
 ?>
