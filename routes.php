@@ -1,19 +1,11 @@
-<?php 
-  function loaderController() {
-    $controller = str_replace('/', '', parse_url($_SERVER['REQUEST_URI'])['path']);
+<?php
 
-    if (!$controller) $controller = 'index';
+$controller = str_replace('/', '', parse_url($_SERVER['REQUEST_URI'])['path']);
 
-    if (! file_exists("controllers/{$controller}.controller.php")) {
-      http_response_code(404);
+if (!$controller) $controller = 'index';
 
-      echo "Página não existe";
+if ( ! file_exists("controllers/{$controller}.controller.php")) {
+  abort(404);
+}
 
-      die();
-    }
-
-    require "controllers/{$controller}.controller.php";
-  }
-
-  loaderController();
-?>
+require "controllers/{$controller}.controller.php";

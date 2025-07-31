@@ -7,7 +7,5 @@
 
   $book = array_pop($filteredBooks);
 
-  $view = 'book';
-
-  require 'views/template/app.php';
+  view('book');
 ?>
