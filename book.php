@@ -1,3 +1,19 @@
+<?php
+  require 'data.php';
+
+  $id = $_REQUEST['id'];
+
+  echo "<pre>";
+
+  var_dump($_SERVER);
+
+  echo "</pre>";
+
+  $filteredBooks = array_filter($books, fn($l) => $l['id'] == $id);
+
+  $book = array_pop($filteredBooks);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,8 +41,26 @@
     </nav>
   </header>
 
-  <main class="mx-auto max-w-screen-lg space-y-6 px-8">
-    //muda aqui
+  <main class="mx-auto max-w-screen-lg space-y-6 p-8">
+    <?= $book['title']; ?>
+
+    <div class="p-2 rounded border-stone-800 border-2 bg-stone-900">
+      <div class="flex">
+        <div class="w-1/3">Imagem</div>
+
+        <div class="space-y-1">
+          <a href="/book.php?id=<?= $book['id'] ?>" class="font-semibold hover:underline">
+            <?= $book['title'] ?>
+          </a>
+          <div class="text-xs italic">
+            <?= $book['author'] ?>
+          </div>
+          <div class="text-xs italic">
+            ⭐⭐⭐⭐⭐(3 Avaliações)
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
 </body>
