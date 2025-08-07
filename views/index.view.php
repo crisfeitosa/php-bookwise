@@ -16,18 +16,22 @@
         <div class="w-1/3">Imagem</div>
 
         <div class="space-y-1">
-          <a href="/book?id=<?= $book['id'] ?>" class="font-semibold hover:underline">
-            <?= $book['title'] ?>
+          <a href="/book?id=<?= $book->id ?>" class="font-semibold hover:underline">
+            <?= $book->title ?>
           </a>
           <div class="text-xs italic">
-            <?= $book['author'] ?>
+            <?= $book->author ?>
           </div>
-          <div class="text-xs italic">⭐⭐⭐⭐⭐(3 Avaliações)</div>
+          <div class="text-xs italic">
+            Ano de Publicação: <?= $book->year_of_release ?>
+          </div>
+
+          <div class="text-xs italic">⭐⭐⭐⭐⭐ (3 Avaliações)</div>
         </div>
       </div>
 
       <div class="text-sm mt-2">
-        <?= $book['description'] ?>
+        <?= $book->description ?>
       </div>
     </div>
   <?php endforeach ?>

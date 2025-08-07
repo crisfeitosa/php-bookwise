@@ -12,7 +12,7 @@
         <?= $book['author'] ?>
       </div>
       <div class="text-xs italic">
-        ⭐⭐⭐⭐⭐(3 Avaliações)
+        ⭐⭐⭐⭐⭐ (3 Avaliações)
       </div>
     </div>
   </div>
