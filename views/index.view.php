@@ -25,7 +25,6 @@
           <div class="text-xs italic">
             Ano de Publicação: <?= $book->year_of_release ?>
           </div>
-
           <div class="text-xs italic">⭐⭐⭐⭐⭐ (3 Avaliações)</div>
         </div>
       </div>
