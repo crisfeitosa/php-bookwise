@@ -8,27 +8,15 @@
       $this->db = new PDO('sqlite:database.sqlite');
     }
 
-    public function books($search = null) {
-      $prepare = $this->db->prepare("select * from books where user_id = 1 and title like :search");
+    public function query($query, $class = null, $params = []) {
+      $prepare = $this->db->prepare($query);
 
-      $prepare->bindValue('search', "%$search%");
+      if($class) {
+        $prepare->setFetchMode(PDO::FETCH_CLASS, $class);
+      }
 
-      $prepare->setFetchMode(PDO::FETCH_CLASS, Book::class);
+      $prepare->execute($params);
 
-      $prepare->execute();
-
-      return $prepare->fetchAll();
-    }
-
-    public function book($id) {
-      $prepare = $this->db->prepare("select * from books where id = :id");
-
-      $prepare->bindParam('id', $id);
-
-      $prepare->setFetchMode(PDO::FETCH_CLASS, Book::class);
-
-      $prepare->execute();
-
-      return $prepare->fetch();
+      return $prepare;
     }
   }
