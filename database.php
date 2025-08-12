@@ -10,7 +10,7 @@
         'database' => 'database.sqlite'
       ];
 
-      $connectionString = $config['drive'] . ':' . $config['database'];
+      $connectionString = $config['driver'] . ':' . $config['database'];
 
       $this->db = new PDO($connectionString);
     }
