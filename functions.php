@@ -5,15 +5,19 @@
       $$key = $value;
     }
 
-    require "views/template/app.php";
+    require 'views/template/app.php';
   }
 
   function dd(...$dump) {
+    dump($dump);
+
+    die();
+  }
+
+  function dump(...$dump) {
     echo '<pre>';
 
     var_dump($dump);
-
-    die();
 
     echo '</pre>';
   }
