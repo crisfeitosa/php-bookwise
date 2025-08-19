@@ -1,6 +1,21 @@
 <?php
 
+  require 'Validation.php';
+
   if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $validation = Validation::validate([
+      'name' => ['required'],
+      'email' => ['required', 'email', 'confirmed'],
+      'password' => ['required', 'min:8', 'max:30', 'strong']
+    ], $_POST);
+
+    if($validation->notValid()) {
+      $_SESSION['validations'] = $validation->validations;
+      header('location: /register');
+
+      exit();
+    }
+
     $validations = [];
     $name = $_POST['name'];
     $email = $_POST['email'];

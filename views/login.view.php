@@ -44,12 +44,12 @@
 
       <div class="flex flex-col">
         <label class="text-stone-400 mb-1">Email</label>
-        <input type="email" name="email" class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1 w-full">
+        <input type="text" name="email" class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1 w-full">
       </div>
 
       <div class="flex flex-col">
         <label class="text-stone-400 mb-1">Confirme seu Email</label>
-        <input type="email" name="email_confirmation" class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1 w-full">
+        <input type="text" name="email_confirmation" class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1 w-full">
       </div>
 
       <div class="flex flex-col">

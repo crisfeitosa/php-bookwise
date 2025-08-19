@@ -8,6 +8,6 @@
 
   $config = require 'config.php';
 
-  require "database.php";
+  require "Database.php";
 
   require "routes.php";
