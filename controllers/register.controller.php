@@ -6,7 +6,7 @@
     $validation = Validation::validate([
       'name' => ['required'],
       'email' => ['required', 'email', 'confirmed'],
-      'password' => ['required', 'min:8', 'max:30', 'strong']
+      //'password' => ['required', 'min:8', 'max:30', 'strong']
     ], $_POST);
 
     if($validation->notValid()) {
