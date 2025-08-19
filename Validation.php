@@ -12,6 +12,14 @@
 
           if($rule == 'confirmed') {
             $validation->$rule($field, $valueField, $data["{$field}_confirmation"]);
+          } else if (str_contains($rule, ':')) {
+            $temp = explode(':', $rule);
+
+            $rule = $temp[0];
+
+            $ruleAr = $temp[1];
+
+            $validation->$rule($ruleAr, $field, $valueField);
           } else {
             $validation->$rule($field, $valueField);
           }
@@ -39,7 +47,27 @@
       }
     }
 
+    private function min($min, $field, $value) {
+      if (strlen($value) <= $min) {
+        $this->validations[] = "O $field precisa ter um mínimo de $min caracteres.";
+      }
+    }
+
+    private function max($max, $field, $value) {
+      if (strlen($value) > $max) {
+        $this->validations[] = "O $field precisa ter um máximo de $max caracteres.";
+      }
+    }
+
+    private function strong($field, $value) {
+      if (! strpbrk($value, "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~")) {
+        $this->validations[] = "A $field precisa ter ao menos um caractere especial nela.";
+      }
+    }
+
     public function notValid() {
+      $_SESSION['validations'] = $this->validations;
+
       return sizeof($this->validations) > 0;
     }
   }
