@@ -9,10 +9,8 @@
       'password' => ['required', 'min:8', 'max:30', 'strong']
     ], $_POST);
 
-    //dd( $validation );
-
     if($validation->notValid()) {
-      header('location: /register');
+      header('location: /login');
 
       exit();
     }

@@ -2,7 +2,7 @@
   <div class="border border-stone-700 rounded">
     <h1 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Login</h1>
 
-    <form class="p-4 space-y-4">
+    <form class="p-4 space-y-4" method="POST">
       <div class="flex flex-col">
         <label class="text-stone-400 mb-1">Email</label>
         <input type="email" name="email" class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1 w-full">
@@ -30,8 +30,8 @@
         <div class="border-red-800 bg-red-900 text-red-400 px-4 py-1 rounded-md border-2 text-sm font-bold">
           <ul>
             <li>Deu ruim!!</li>
-            <?php foreach ($_SESSION['validations'] as $validations): ?>
-              <li><?= $validations ?></li>
+            <?php foreach ($_SESSION['validations'] as $validation): ?>
+              <li><?= $validation ?></li>
             <?php endforeach; ?>
           </ul>
         </div>

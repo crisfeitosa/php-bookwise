@@ -1,7 +1,7 @@
 <?php
 
   class Validation {
-    public $validations;
+    public $validations = [];
 
     public static function validate($rules, $data) {
       $validation = new self;
