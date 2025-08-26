@@ -29,3 +29,7 @@
 
     die();
   }
+
+  function flash() {
+    return new Flash;
+  }

@@ -7,7 +7,7 @@
       'password' => ['required', 'min:8', 'max:30', 'strong']
     ], $_POST);
 
-    if($validation->notValid()) {
+    if($validation->notValid('register')) {
       header('location: /login');
 
       exit();
@@ -21,8 +21,10 @@
         'password' => $_POST['password']
       ]
     );
+
+    flash()->push('message', 'Registrado com sucesso! 👍');
     
-    header('location: /login?message=Usuário cadastrado com sucesso!');
+    header('location: /login');
 
     exit();
   };

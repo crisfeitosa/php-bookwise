@@ -65,8 +65,14 @@
       }
     }
 
-    public function notValid() {
-      $_SESSION['validations'] = $this->validations;
+    public function notValid($nameCustom = null) {
+      $key = 'validations';
+
+      if($nameCustom) {
+        $key .= '_' . $nameCustom;
+      }
+
+      flash()->push($key, $this->validations);
 
       return sizeof($this->validations) > 0;
     }

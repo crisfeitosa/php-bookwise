@@ -1,7 +1,5 @@
 <?php
 
-  $message = $_REQUEST['message'] ?? '';
-
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -11,7 +9,7 @@
       'password' => ['required']
     ], $_POST);
 
-    if ($validation->notValid()) {
+    if ($validation->notValid('login')) {
       header('Location: /login');
 
       exit();
@@ -26,7 +24,7 @@
     if($user) {
       $_SESSION['auth'] = $user;
 
-      $_SESSION['message'] = "Seja bem-vindo" . $user->name . "!";
+      flash()->push('message', "Seja bem-vindo" . $user->name . "!");
       
       header('Location: /');
 
@@ -34,4 +32,4 @@
     }
   }
 
-  view('login', compact('message'));
+  view('login');
