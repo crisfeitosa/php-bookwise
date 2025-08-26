@@ -47,6 +47,23 @@
       }
     }
 
+    private function unique($table, $field, $value) {
+      if (strlen($value) == 0) {
+        return;
+      }
+
+      $db = new Database(config('database'));
+
+      $result = $db->query(
+        query: "select * from $table where $field = :value",
+        params: ['value' => $value]
+      )->fetch();
+
+      if ($result) {
+        $this->validations[] = "O $value já está sendo usado.";
+      }
+    }
+
     private function min($min, $field, $value) {
       if (strlen($value) <= $min) {
         $this->validations[] = "O $field precisa ter um mínimo de $min caracteres.";
