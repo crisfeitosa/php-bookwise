@@ -1,3 +1,19 @@
+<?php 
+
+  $sumNotes = array_reduce($reviews, function($carry, $a) {
+    return ($carry ?? 0) + $a->note;
+  }) ?? 0;
+
+  if (count($reviews) > 0) {
+    $sumNotes = round($sumNotes / count($reviews));
+  } else {
+    $sumNotes = 0;
+  }
+
+  $finalNotes = str_repeat('⭐', $sumNotes);
+
+?>
+
 <?= $book->title; ?>
 
 <div class="p-2 rounded border-stone-800 border-2 bg-stone-900">
@@ -14,9 +30,7 @@
       <div class="text-xs italic">
         Ano de Publicação: <?= $book->year_of_release ?>
       </div>
-      <div class="text-xs italic">
-        ⭐⭐⭐⭐⭐ (3 Avaliações)
-      </div>
+      <div class="text-xs italic"><?= $finalNotes ?> (<?=count($reviews)?> Avaliações)</div>
     </div>
   </div>
 
@@ -25,11 +39,23 @@
 
 <h2>Avaliações</h2>
 
-<div class="grid grid-cols-3 gap-4">
-  <div class="col-span-2">lista</div>
+<div class="grid grid-cols-4 gap-4">
+  <div class="col-span-3 gap-4 grid">
+    <?php foreach($reviews as $review): ?>
+      <div class="border border-stone-700 rounded">
+        <?= $review->review ?>
 
-  <?php if (auth()): ?>
-    <div>
+        <?php                  
+          $note = str_repeat('⭐', $review->note);  
+        ?>
+
+        <?= $note ?>
+      </div>
+    <?php endforeach; ?>
+  </div>
+    
+  <div>
+    <?php if (auth()): ?>
       <div class="border border-stone-700 rounded">
         <h1 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Me conte o que achou!</h1>
 
@@ -68,6 +94,6 @@
           <button type="submit" class="border-stone-800 bg-stone-900 text-stone-400 px-4 py-1 rounded-md border-2 hover:bg-stone-700">Salvar</button>
         </form>
       </div>
-    </div>
-  <?php endif; ?>
+    <?php endif; ?>
+  </div>
 </div>

@@ -4,6 +4,8 @@
 
   require "models/User.php";
 
+  require "models/Review.php";
+
   session_start();
 
   require "Flash.php";
