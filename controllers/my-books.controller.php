@@ -1,3 +1,11 @@
 <?php
 
-view('my-books');
+  if (! auth()) {
+    header('Location: /');
+
+    exit();
+  }
+
+  $books = $database->query("select * from books where user_id = :id", Book::class, ['id' => auth()->id]);
+
+  view('my-books', compact('books'));
