@@ -6,6 +6,6 @@
     exit();
   }
 
-  $books = $database->query("select * from books where user_id = :id", Book::class, ['id' => auth()->id]);
+  $books = Book::my(auth()->id);
 
   view('my-books', compact('books'));
