@@ -1,41 +1,4 @@
-<?php 
-
-  $sumNotes = array_reduce($reviews, function($carry, $a) {
-    return ($carry ?? 0) + $a->note;
-  }) ?? 0;
-
-  if (count($reviews) > 0) {
-    $sumNotes = round($sumNotes / count($reviews));
-  } else {
-    $sumNotes = 0;
-  }
-
-  $finalNotes = str_repeat('⭐', $sumNotes);
-
-?>
-
-<?= $book->title; ?>
-
-<div class="p-2 rounded border-stone-800 border-2 bg-stone-900">
-  <div class="flex">
-    <div class="w-1/3">Imagem</div>
-
-    <div class="space-y-1">
-      <a href="/book?id=<?= $book->id ?>" class="font-semibold hover:underline">
-        <?= $book->title ?>
-      </a>
-      <div class="text-xs italic">
-        <?= $book->author ?>
-      </div>
-      <div class="text-xs italic">
-        Ano de Publicação: <?= $book->year_of_release ?>
-      </div>
-      <div class="text-xs italic"><?= $finalNotes ?> (<?=count($reviews)?> Avaliações)</div>
-    </div>
-  </div>
-
-  <div class="text-sm mt-2"><?= $book->description ?></div>
-</div>
+<?php require_once 'partials/_book.php'; ?>
 
 <h2>Avaliações</h2>
 
