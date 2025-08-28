@@ -6,6 +6,7 @@
     public $author;
     public $description;
     public $year_of_release;
+    public $image;
     public $user_id;
     public $note_review;
     public $count_reviews;
@@ -21,6 +22,7 @@
             l.author,
             l.description,
             l.year_of_release,
+            l.image,
             round(sum(a.note) / 5.0) as note_review,
             count(a.id) as count_reviews
           from
@@ -32,7 +34,8 @@
             l.title,
             l.author,
             l.description,
-            l.year_of_release;
+            l.year_of_release,
+            l.image;
         ",
         class: self::class,
         params: $params

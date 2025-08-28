@@ -33,10 +33,18 @@
     exit();
   }
 
+  $newName = md5(rand());
+
+  $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+
+  $image = "images/$newName.$extension";
+
+  move_uploaded_file($_FILES['image']['tmp_name'], $image);
+
   $database->query(
-    "insert into books (title, author, description, year_of_release, user_id)
-    values (:title, :author, :description, :year_of_release, :user_id)",
-    params: compact('title', 'author', 'description', 'year_of_release', 'user_id')
+    "insert into books (title, author, description, year_of_release, user_id, image)
+    values (:title, :author, :description, :year_of_release, :user_id, :image)",
+    params: compact('title', 'author', 'description', 'year_of_release', 'user_id', 'image')
   );
 
   flash()->push('message', 'Livro cadastrado com sucesso!');
