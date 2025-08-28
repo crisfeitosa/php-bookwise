@@ -39,7 +39,7 @@
 
   $image = "images/$newName.$extension";
 
-  move_uploaded_file($_FILES['image']['tmp_name'], $image);
+  move_uploaded_file($_FILES['image']['tmp_name'], __DIR__ . "/../public/$image");
 
   $database->query(
     "insert into books (title, author, description, year_of_release, user_id, image)
